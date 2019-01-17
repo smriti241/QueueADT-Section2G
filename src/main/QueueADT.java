@@ -12,8 +12,13 @@ public class QueueADT
 	{
 		if(!isFull())
 		{
+			//rear and front values are changed according to added number of elements
 			rear++;
 			queue[rear] = value;
+			if(front==-1)
+			{
+				front=rear;
+			}
 		}
 	}
 
@@ -22,8 +27,8 @@ public class QueueADT
 		int deleted = 0;
 		if(!isEmpty())
 		{
-			deleted=front;
-			for(int i=0;i<size-1;i++)
+			deleted=queue[front];
+			for(int i=0;i<size()-1;i++)
 			{
 				queue[i]=queue[i+1];
 			}
@@ -42,18 +47,24 @@ public class QueueADT
 	int size()
 	{
 		int size = 0;
-
-		return size;
+		size=rear+1;
+		return queue.length;
 	}
 
 	boolean isEmpty()
 	{
-		return false;
+		if(front==-1 && rear==-1)
+			return true;
+		else
+			return false;
 	}
 
 	boolean isFull()
 	{
-		return false;
+		if(rear==(queue.length-1))
+			return true;
+		else
+			return false;
 	}
 
 }
