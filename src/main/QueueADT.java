@@ -10,14 +10,25 @@ public class QueueADT
 
 	void enqueue(int value)
 	{
-
+		if(!isFull())
+		{
+			rear++;
+			queue[rear] = value;
+		}
 	}
 
 	int dequeue()
 	{
 		int deleted = 0;
-
-
+		if(!isEmpty())
+		{
+			deleted=front;
+			for(int i=0;i<size-1;i++)
+			{
+				queue[i]=queue[i+1];
+			}
+			front=queue[0];
+		}
 		return deleted;
 	}
 
