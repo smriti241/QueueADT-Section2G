@@ -10,7 +10,7 @@ public class QueueADT
 
 	void enqueue(int value)
 	{
-		if(!isFull())
+		if(rear!=(size()-1))
 		{
 			//rear and front values are changed according to added number of elements
 			rear++;
@@ -25,15 +25,6 @@ public class QueueADT
 	int dequeue()
 	{
 		int deleted = 0;
-		if(!isEmpty())
-		{
-			deleted=queue[front];
-			for(int i=0;i<size()-1;i++)
-			{
-				queue[i]=queue[i+1];
-			}
-			front=queue[0];
-		}
 		return deleted;
 	}
 
@@ -46,24 +37,16 @@ public class QueueADT
 
 	int size()
 	{
-		int size = 0;
-		size=rear+1;
-		return queue.length;
-	}
+			}
 
 	boolean isEmpty()
 	{
-		if(front==-1 && rear==-1)
-			return true;
-		else
+
 			return false;
 	}
 
 	boolean isFull()
 	{
-		if(rear==(queue.length-1))
-			return true;
-		else
 			return false;
 	}
 
